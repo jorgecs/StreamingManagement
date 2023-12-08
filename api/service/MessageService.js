@@ -9,18 +9,14 @@
  **/
 exports.streamingReceiveMessage = function(messageId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "messageType" : 3,
-  "messageId" : "1",
-  "emitter" : "{}",
-  "content" : "Hello"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    const Message = {
+      messageType: (Math.floor(Math.random() * 2) + 1),
+      messageId: messageId,
+      emitter: (Math.floor(Math.random() * 9) + 1),
+      receiver: (Math.floor(Math.random() * 9) + 1),
+      content: "Hello"
     }
+    resolve(Message)
   });
 }
 
@@ -35,8 +31,8 @@ exports.streamingSendMessage = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "message" : "Operation returned successfully"
-};
+      "message": `Message sent from ${body.emitter} to ${body.receiver} with content ${body.content}`
+    };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -44,4 +40,5 @@ exports.streamingSendMessage = function(body) {
     }
   });
 }
+
 

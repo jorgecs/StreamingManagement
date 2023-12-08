@@ -7,12 +7,12 @@
  * streamingId String streaming to delete
  * returns APIResponse
  **/
-exports.streamingDelete = function(streamingId) {
-  return new Promise(function(resolve, reject) {
+exports.streamingDelete = function (streamingId) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "message" : "Operation returned successfully"
-};
+      "message": "Streaming deleted"
+    };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -30,20 +30,15 @@ exports.streamingDelete = function(streamingId) {
  * description String The description to change (optional)
  * returns Streaming
  **/
-exports.streamingEdit = function(streamingId,title,description) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "owner" : "{}",
-  "streamId" : "1",
-  "description" : "Doing my first stream",
-  "title" : "First stream"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+exports.streamingEdit = function (streamingId, title, description) {
+  return new Promise(function (resolve, reject) {
+    const Streaming = {
+      owner: (Math.floor(Math.random() * 9) + 1),
+      streamId: streamingId,
+      description: description || "Doing my first stream",
+      title: title || "First stream"
     }
+    resolve(Streaming)
   });
 }
 
@@ -54,12 +49,12 @@ exports.streamingEdit = function(streamingId,title,description) {
  * streamingId String streaming to end
  * returns APIResponse
  **/
-exports.streamingEnd = function(streamingId) {
-  return new Promise(function(resolve, reject) {
+exports.streamingEnd = function (streamingId) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "message" : "Operation returned successfully"
-};
+      "message": "Stream  ended succesfully"
+    };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -76,20 +71,15 @@ exports.streamingEnd = function(streamingId) {
  * moderation Integer type of moderation
  * returns Streaming
  **/
-exports.streamingModerate = function(streamingId,moderation) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "owner" : "{}",
-  "streamId" : "1",
-  "description" : "Doing my first stream",
-  "title" : "First stream"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+exports.streamingModerate = function (streamingId, moderation) {
+  return new Promise(function (resolve, reject) {
+    const Streaming = {
+      owner: (Math.floor(Math.random() * 9) + 1),
+      streamId: streamingId,
+      description: "Doing my first stream",
+      title: "First stream"
     }
+    resolve(Streaming)
   });
 }
 
@@ -100,20 +90,15 @@ exports.streamingModerate = function(streamingId,moderation) {
  * streamingId String Streaming ID to get
  * returns Streaming
  **/
-exports.streamingReceive = function(streamingId) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "owner" : "{}",
-  "streamId" : "1",
-  "description" : "Doing my first stream",
-  "title" : "First stream"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+exports.streamingReceive = function (streamingId) {
+  return new Promise(function (resolve, reject) {
+    const Streaming = {
+      owner: (Math.floor(Math.random() * 9) + 1),
+      streamId: streamingId,
+      description: "Doing my first stream",
+      title: "First stream"
     }
+    resolve(Streaming)
   });
 }
 
@@ -124,12 +109,12 @@ exports.streamingReceive = function(streamingId) {
  * body Streaming 
  * returns APIResponse
  **/
-exports.streamingStart = function(body) {
-  return new Promise(function(resolve, reject) {
+exports.streamingStart = function (body) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "message" : "Operation returned successfully"
-};
+      "message": `Live streaming ${body.title} started`
+    };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -137,4 +122,5 @@ exports.streamingStart = function(body) {
     }
   });
 }
+
 

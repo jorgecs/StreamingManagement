@@ -283,7 +283,7 @@ components:
       - title
       type: object
       properties:
-        streamId:
+        streamingId:
           type: string
           example: "1"
         title:
@@ -293,16 +293,17 @@ components:
           type: string
           example: Doing my first stream
         owner:
-          $ref: '#/components/schemas/User/properties/userId'
+          type: string
+          example: "1"
       example:
         owner: "{}"
-        streamId: "1"
+        streamingId: "1"
         description: Doing my first stream
         title: First stream
     Message:
       required:
       - content
-      - emiter
+      - emitter
       - messageId
       - messageType
       - receiver
@@ -318,14 +319,16 @@ components:
           type: string
           example: Hello
         emitter:
-          $ref: '#/components/schemas/User/properties/userId'
+          type: string
+          example: "1"
         receiver:
-          $ref: '#/components/schemas/User/properties/userId'
+          type: string
+          example: "1"
       example:
         messageType: 3
-        receiver: null
+        receiver: "2"
         messageId: "1"
-        emitter: "{}"
+        emitter: "1"
         content: Hello
     APIResponse:
       required:
