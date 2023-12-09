@@ -17,18 +17,19 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
+    - name: Copy package-lock.json to root
+      run: cp public/package-lock.json ./
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-      working-directory: ./public  # Adjust the path if needed
+      working-directory: ./public
     - run: npm run build --if-present
-      working-directory: ./public  # Adjust the path if needed
+      working-directory: ./public
     - run: npm test
-      working-directory: ./public  # Adjust the path if needed
+      working-directory: ./public
