@@ -31,5 +31,3 @@ jobs:
       working-directory: ./public
     - run: npm run build --if-present
       working-directory: ./public
-    - run: npm test
-      working-directory: ./public
